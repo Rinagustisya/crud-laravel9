@@ -15,4 +15,13 @@ class PostController extends Controller
         // render view with post
         return view('posts.index', compact('posts'));
     }
+
+    public function create()
+    {
+        // get posts
+        $posts = Post::latest()->paginate(5);
+
+        // render view with post
+        return view('posts.create', compact('posts'));
+    }
 }
