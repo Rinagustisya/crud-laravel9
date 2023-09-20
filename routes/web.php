@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/posts', \App\Http\Controller\PostController::class);
+Route::resource('/posts', \App\Http\Controllers\PostController::class);
+
+// Route::get('/posts', 'PostController@show')->name('PostController.index');
