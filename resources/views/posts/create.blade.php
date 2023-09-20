@@ -12,7 +12,7 @@
         <div class="col-md-12">
         <div class="card border-8 shadow rounded">
         <div class="card-body">
-            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-grub">
                     <label class="font-weight-bold">GAMBAR</label>
