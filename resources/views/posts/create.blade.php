@@ -34,7 +34,7 @@
                     </div>
                     @enderror
             </div>
-            <div class="form-grub">
+            <div class="form-grub mb-3">
                 <label class="font-weight-bold">KONTEN</label>
                 <textarea class="form-control @error('content') is-invalid @enderror"  name="content" rows="5" placeholder="Masukkan Konten Post">{{ old('content') }}</textarea>
                 <!-- Error messege untuk content -->
@@ -44,7 +44,7 @@
                     </div>
                     @enderror
             </div>
-            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button> &nbsp;
             <button type="reset" class="btn btn-md btn-warning">RESET</button>
             </form>
     </div>
@@ -56,6 +56,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('content');
 </script>

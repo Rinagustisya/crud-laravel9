@@ -33,7 +33,7 @@
                                         <img src="{{ Storage::url('public/posts/').$post->image }}" class="rounded" style="width:150px" alt="gambar">
                                     </td>
                                     <td>{{ $post->title }}</td>
-                                    <td>{ !! $post->content !! }</td>
+                                    <td>{ { $post->content } }</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda yakin?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
