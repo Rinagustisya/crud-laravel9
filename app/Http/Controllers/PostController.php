@@ -45,4 +45,33 @@ class PostController extends Controller
 
        return redirect()->route('posts.index')->with(['success'=>'Data berhasil disimpan!']);
     }
+
+    public function edit(Post $post)
+    {
+        // render view with post
+        return view('posts.edit', compact('posts'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        //validate form
+       $this->validate($request, [
+        'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'title'     => 'required|min:5',
+        'content'   => 'required|min:10'
+       ]);
+
+       //upload image
+       $image = $request->file('image');
+       $image->storeAs('public/posts', $image->hashName());
+
+       // create
+       Post::create([
+            'image'     => $image->hashName(),
+            'title'     => $request->title,
+            'content'   => $request->content
+       ]);
+
+       return redirect()->route('posts.index')->with(['success'=>'Data berhasil disimpan!']);
+    }
 }
