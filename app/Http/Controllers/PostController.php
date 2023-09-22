@@ -86,4 +86,16 @@ class PostController extends Controller
         }
          return redirect()->route('posts.index')->with(['success'=>'Data berhasil diupdate!']);
     }
+
+    public function destroy(Post $post)
+    {
+        Storage::delete('public/posts/'. $post->image);
+
+        // delete post
+        $post ->delete();
+        // render view with post
+        return redirect()->route('posts.index')->with(['success'=>'Data berhasil dihapus!']);
+    }
+
+    
 }
