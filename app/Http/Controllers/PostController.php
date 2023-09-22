@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -49,7 +50,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         // render view with post
-        return view('posts.edit', compact('posts'));
+        return view('posts.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post)
