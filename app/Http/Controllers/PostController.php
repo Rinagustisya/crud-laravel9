@@ -61,17 +61,29 @@ class PostController extends Controller
         'content'   => 'required|min:10'
        ]);
 
-       //upload image
-       $image = $request->file('image');
-       $image->storeAs('public/posts', $image->hashName());
+      // check if image is upload 
+      if($request->hashFile('image')) {
+          //upload new image
+          $image = $request->file('image');
+          $image->storeAs('public/posts', $image->hashName());
 
-       // create
-       Post::create([
+          // delete old image
+          Storage::delete('public/posts/'. $post->image);
+
+          Post::update([
             'image'     => $image->hashName(),
             'title'     => $request->title,
             'content'   => $request->content
        ]);
 
-       return redirect()->route('posts.index')->with(['success'=>'Data berhasil disimpan!']);
+        } else {
+            
+            Post::update([
+                'title'     => $request->title,
+                'content'   => $request->content
+           ]);
+
+        }
+         return redirect()->route('posts.index')->with(['success'=>'Data berhasil diupdate!']);
     }
 }
