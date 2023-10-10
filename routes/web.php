@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
-
+Route::put('post/update/{post}', [App\Http\Controllers\PostController::class, 'update'])->name('update');
 // Route::get('/posts', 'PostController@show')->name('PostController.index');

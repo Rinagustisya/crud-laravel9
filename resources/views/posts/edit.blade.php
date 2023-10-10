@@ -12,7 +12,7 @@
         <div class="col-md-12">
         <div class="card border-8 shadow rounded">
         <div class="card-body">
-            <form action="{{ route('posts.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('update', $post) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-grub">
