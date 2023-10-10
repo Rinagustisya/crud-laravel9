@@ -63,23 +63,17 @@ class PostController extends Controller
        ]);
 
       // check if image is upload 
-      if($request->hashFile('image')) {
+      if($request->hasFile('image')) {
           //upload new image
           $image = $request->file('image');
           $image->storeAs('public/posts', $image->hashName());
 
           // delete old image
           Storage::delete('public/posts/'. $post->image);
-
-          Post::update([
-            'image'     => $image->hashName(),
-            'title'     => $request->title,
-            'content'   => $request->content
-       ]);
-
         } else {
             
             Post::update([
+                'image'     => $image->hashName(),
                 'title'     => $request->title,
                 'content'   => $request->content
            ]);
