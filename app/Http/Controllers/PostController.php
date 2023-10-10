@@ -70,10 +70,16 @@ class PostController extends Controller
 
           // delete old image
           Storage::delete('public/posts/'. $post->image);
+
+          $post->update([
+            'image'     => $image->hashName(),
+            'title'     => $request->title,
+            'content'   => $request->content
+       ]);
+
         } else {
             
-            Post::update([
-                'image'     => $image->hashName(),
+            $post->update([
                 'title'     => $request->title,
                 'content'   => $request->content
            ]);
